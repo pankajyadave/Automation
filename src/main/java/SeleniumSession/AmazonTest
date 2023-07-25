@@ -1,0 +1,33 @@
+package SeleniumSession;
+
+public class AmazonTest {
+
+	public static void main(String[] args) {
+
+		BrowserUtil brutil = new BrowserUtil();
+		String browserName = "chrome";
+
+		brutil.initDriver(browserName);
+		brutil.launchURL("https://www.amazon.in/");
+
+		String actual_page_title = brutil.getPageTitle();
+		if (actual_page_title.contains("Amazon")) {
+			System.out.println("Page Title - Pass");
+			
+		} else {
+			System.out.println("Page Title - Fail");
+		}
+
+		String actual_current_page_URL = brutil.getPageCurrentURL();
+		if (actual_current_page_URL.contains("amazon")) {
+			System.out.println("Page URL - Pass");
+
+		} else {
+			System.out.println("Page URL - Fail");
+
+		}
+		
+		brutil.quitBrowser();
+	}
+
+}

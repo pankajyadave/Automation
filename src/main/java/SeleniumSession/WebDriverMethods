@@ -1,0 +1,36 @@
+package SeleniumSession;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class WebDriverMethods {
+
+	public static void main(String[] args) {
+
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://amazon.in");
+
+		driver.manage().window().maximize();
+		// driver.manage().window().fullscreen();
+
+		driver.manage().deleteAllCookies();
+
+		String current_url = driver.getCurrentUrl();
+		System.out.println(current_url);
+
+		if (current_url.contains("amazon.in")) {
+
+			System.out.println("Pass");
+		}
+		
+		String page_course=driver.getPageSource();
+		System.out.println(page_course);
+		if(page_course.contains("Amazon")) {
+			
+			System.out.println("Pass");
+		}
+		
+		driver.quit();
+	}
+
+}

@@ -1,0 +1,39 @@
+package SeleniumSession;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class RegPageTest {
+
+	public static void main(String[] args) {
+
+		String browserName = "chrome";
+
+		BrowserUtil brUtil = new BrowserUtil();
+
+		WebDriver driver = brUtil.initDriver(browserName);
+		brUtil.launchURL("https://naveenautomationlabs.com/opencart/index.php?route=account/register");
+
+		String actual_page_title = brUtil.getPageTitle();
+		System.out.println(actual_page_title);
+
+		// by locators: OR(object repository)
+		By firstName = By.id("input-firstname");
+		By lastName = By.id("input-lastname");
+		By email = By.id("input-email");
+		By telephone = By.id("input-telephone");
+		By password = By.id("input-password");
+		By confirmPassword = By.id("input-confirm");
+
+		ElementUtil eleUtil = new ElementUtil(driver);
+
+		eleUtil.doSendKeys(firstName, "Pankaj");
+		eleUtil.doSendKeys(lastName, "Singh");
+		eleUtil.doSendKeys(email, "pankaj@gmail.com");
+		eleUtil.doSendKeys(telephone, "3423456545");
+		eleUtil.doSendKeys(password, "pankaj@123");
+		eleUtil.doSendKeys(confirmPassword, "pankaj@123");
+
+	}
+
+}
